@@ -125,6 +125,13 @@ impl Engine {
         self.load_url(&path);
     }
 
+    pub fn add_import_path(&mut self, path: &str) {
+        unsafe {
+            ffi::qmlrs_engine_add_import_path(self.i.p, path.as_ptr() as *const c_char,
+                                       path.len() as c_uint);
+        }
+    }
+
     pub fn exec(self) {
         unsafe { ffi::qmlrs_app_exec(); }
     }

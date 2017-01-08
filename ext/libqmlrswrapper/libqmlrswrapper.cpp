@@ -51,6 +51,10 @@ rust_fun void qmlrs_engine_load_from_data(QrsApplicationEngine *engine, const ch
     engine->loadData(QByteArray::fromRawData(data, len), QUrl());
 }
 
+rust_fun void qmlrs_engine_add_import_path(QrsApplicationEngine *engine, const char *path, unsigned int len) {
+    engine->addImportPath(QString::fromUtf8(path, len));
+}
+
 rust_fun void qmlrs_engine_invoke(QrsApplicationEngine *engine, const char *method,
                                   QVariant *result, const QVariantList *args)
 {
